@@ -25,37 +25,37 @@ module.exports = {
   /*
   ** Build configuration
   */
-  // build: {
-  //   /*
-  //   ** Run ESLint on save
-  //   */
-  //   extend (config, { isDev, isClient }) {
-  //     if (isDev && isClient) {
-  //       config.module.rules.push({
-  //         enforce: 'pre',
-  //         test: /\.(js|vue)$/,
-  //         loader: 'eslint-loader',
-  //         exclude: /(node_modules)/
-  //       })
-  //     }
-  //   }
-  // },
+  build: {
+    /*
+    ** Run ESLint on save
+    */
+    extend (config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    }
+  },
 
   modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
 
   axios: {
-    // baseURL: 'http://127.0.0.1:3333/api'
-  }
+    baseURL: 'http://127.0.0.1:3333/api'
+  },
 
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: { url: 'login', method: 'post', propertyName: 'data.token' },
-  //         user: { url: 'me', method: 'get', propertyName: 'data' },
-  //         logout: false
-  //       }
-  //     }
-  //   }
-  // }
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
+  }
 }

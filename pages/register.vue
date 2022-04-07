@@ -8,7 +8,6 @@
         <div class="column is-4 is-offset-4">
           <h2 class="title has-text-centered">Register!</h2>
 
-          <Notification :message="error" v-if="error"/>
 
           <form method="post" @submit.prevent="register">
 
@@ -74,13 +73,10 @@
 
 <script>
 import Navbar from '~/components/Navbar';
-import Notification from '~/components/Notification';
 
 export default {
-  middleware: 'guest',
 
   components: {
-    Notification,
     Navbar,
   },
 
@@ -101,14 +97,6 @@ export default {
           email: this.email,
           password: this.password,
         });
-
-        // await this.$auth.loginWith('http://localhost:5248/api/user/login', {
-        //   data: {
-        //     email: this.email,
-        //     password: this.password,
-        //   },
-        // });
-
         this.$router.push('/login');
       } catch (e) {
         this.error = e.response.data.message;

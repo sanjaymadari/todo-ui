@@ -1,10 +1,9 @@
 <template>
 <div>
-    <Navbar/>
+  <Navbar/>
   <section class="section">
     <div class="container">
-
-      <h1 class="title">Welcome To TodoApp, To see todos Login!</h1>
+      <h1 class="title"><marquee behavior="alternate" direction="">Welcome To TodoApp, To see todos Login!</marquee></h1>
     </div>
   </section>
 </div>
@@ -17,6 +16,12 @@ export default {
   components: {
     Navbar,
   },
-  }
+}
 </script>
+
+<style scoped>
+h1{
+  color: blue;
+}
+</style>
 

@@ -1,32 +1,12 @@
 <template>
-  <nav class="navbar is-light">
+  <nav class="navbar is-dark">
     <div class="container">
       <div class="navbar-brand">
-        <nuxt-link class="navbar-item" to="/">Todo</nuxt-link>
-
-        <button class="button navbar-burger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <nuxt-link class="navbar-item" to="/"><h1 style="font-weight: bold;font-size:25px;">Todo App</h1></nuxt-link>
       </div>
-
       <div class="navbar-menu">
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable" v-if="false">
-            <a class="navbar-link">
-              {{ loggedInUser.name }}
-            </a>
-            <div class="navbar-dropdown">
-              <nuxt-link class="navbar-item" to="/profile">My Profile</nuxt-link>
-              <hr class="navbar-divider">
-              <a class="navbar-item" @click="logout">Logout</a>
-            </div>
-          </div>
-          <template v-else>
-            <!-- <nuxt-link class="navbar-item" to="/register">Register</nuxt-link> -->
             <nuxt-link class="navbar-item" to="/login">Log In</nuxt-link>
-          </template>
         </div>
       </div>
     </div>
@@ -34,18 +14,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
-  computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser']),
-  },
-
-  methods: {
-    async logout() {
-      await this.$auth.logout();
-    },
-  },
 };
 </script>
 

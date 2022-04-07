@@ -8,12 +8,6 @@ const getters = {};
 
 
 export const mutations = {
-  // getTasks(state, todos) {
-  //   state.todos = []
-  // },
-  // createTaks(state, todos) {
-  //   state.todos.push(todos)
-  // },
   setToken(state, token) {
       state.token = token;
   },
@@ -29,23 +23,20 @@ export const mutations = {
 
 const actions = {
 
-
   async login({ commit }, data) {
     try {
       await this.$axios.post('http://localhost:5248/api/user/login', {
           email: data.email,
           password: data.password,
-
       }).then(response => {
         commit('setToken', response.data);
+        console.log("Login successful");
       })
-
       this.$router.push('/todos/');
     } catch (e) {
       this.error = e.response.data.message;
     }
   },
-
 
   async getMyTodos({commit,state}) {
     await this.$axios.get('http://localhost:5248/api/todo/mytodos',
@@ -56,14 +47,13 @@ const actions = {
     })
     .then(response => {
       commit('setMyTodos', response.data);
-      console.log(response.data);
+      console.log("My Todos fetched successfully");
     })
     .catch(error => {
       console.log(error)
       this.errorMessage = error
     })
   },
-
 
   async getTodos({commit,state}) {
     await this.$axios.get('http://localhost:5248/api/todo/alltodos',
@@ -74,7 +64,7 @@ const actions = {
     })
     .then(response => {
       commit('setTodos', response.data);
-      console.log(response.data);
+      console.log("Todos fetched successfully");
     })
     .catch(error => {
       console.log(error)
@@ -90,8 +80,11 @@ const actions = {
         }
     })
     .then(response => {
-      console.log(response.data);
-      // this.getMyTodos();
+      console.log("Todo added successfully");
+    })
+    .catch(error => {
+      console.log(error)
+      this.errorMessage = error
     })
   },
 
@@ -104,7 +97,6 @@ const actions = {
     })
     .then(response => {
       console.log(response.data);
-      // this.getMyTodos();
     })
   },
 
@@ -119,45 +111,7 @@ const actions = {
       console.log(response.data);
     })
   }
-
-
 };
-
-
-
-
-// const state = () => ({
-//    list: null,
-//    listTotalCount: null,
-//    token: null,
-
-// });
-
-// const getters = {};
-
-// const mutations = {
-//    setList(state, res) {
-//       state.list = res.data;
-//    },
-// };
-
-// const actions = {
-//    async getList({ commit, rootState, rootGetters }, data) {
-//       let branchIds =
-//          data.branch_ids.length == 0 ? null : data.branch_ids.join(",");
-//       try {
-//          let url = "/adoption_call";
-//          if (data.export && !data.negative) url += "/export";
-//          const res = await this.$axios.get();
-//          if (!data.export) commit("setList", res);
-//          else download(res.data, "adoption-call.csv");
-//       } catch (error) {
-//          console.log(error.response?.data ?? error.message);
-//          console.log(error);
-//          throw error;
-//       }
-//    },
-// };
 
 export default {
    state,

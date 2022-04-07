@@ -73,24 +73,8 @@ export default {
   methods: {
   async loginFromStore() {
       await this.$store.dispatch('login', this.data);
-    },
-    async login() {
-      try {
-        await this.$axios.post('http://localhost:5248/api/user/login', {
-            email: this.email,
-            password: this.password,
-
-        }).then(response => {
-          this.token = response.data;
-          console.log(this.token);
-        })
-
-        this.$router.push('/todos/');
-      } catch (e) {
-        this.error = e.response.data.message;
-      }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 

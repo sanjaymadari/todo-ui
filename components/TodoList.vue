@@ -4,55 +4,39 @@
         <table align="center" id="table">
             <tr>
                 <th>SNo</th>
-                <!-- <th>Id</th> -->
-                <th>UserId</th>
+                <!-- <th>User Name</th> -->
                 <th>Descriptoin</th>
                 <th>IsCompleted</th>
             </tr>
             <tr v-for="(todo,i) in $store.state.todos" :key="todo.id">
                 <td>{{ i+1 }}</td>
-                <!-- <td>{{ todo.id }}</td> -->
-                <td>{{ todo.user_id }}</td>
+                <!-- <td>{{ todo.user_name }}</td> -->
                 <td>{{ todo.description }}</td>
-                <td align-text="center">{{ todo.is_completed }}</td>
+                <td>{{ todo.is_completed }}</td>
             </tr>
         </table>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'TodoList',
-        created () {
-            this.getTodos()
-        },
-        data () {
-            return {
-                todos: [],
-                errorMessage: '',
-            }
-        },
-        methods: {
-         async getTodos () {
-            await this.$store.dispatch('getTodos');
-            //     axios.get('http://localhost:5248/api/todo/alltodos',
-            //     {
-            //         headers: {
-            //             'Authorization': 'Bearer ' + this.token,
-            //         }
-            //     }
-            //     )
-            //         .then(response => {
-            //             this.todos = response.data
-            //         })
-            //         .catch(error => {
-            //             console.log(error)
-            //             this.errorMessage = error
-            //         })
-             }
+export default {
+    name: 'TodoList',
+    created () {
+        this.getTodos()
+    },
+    data () {
+        return {
+            todos: [],
+            errorMessage: '',
         }
-
+    },
+    methods: {
+        async getTodos () {
+            await this.$store.dispatch('getTodos');
+        }
     }
+
+}
 </script>
 
 <style scoped>

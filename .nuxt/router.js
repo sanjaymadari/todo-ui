@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const _0011cd9b = () => import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */).then(m => m.default || m)
-const _3e01a95b = () => import('..\\pages\\profile.vue' /* webpackChunkName: "pages_profile" */).then(m => m.default || m)
 const _53d2bd3e = () => import('..\\pages\\register.vue' /* webpackChunkName: "pages_register" */).then(m => m.default || m)
 const _0e061d1f = () => import('..\\pages\\todos.vue' /* webpackChunkName: "pages_todos" */).then(m => m.default || m)
 const _366a2a84 = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
@@ -71,11 +70,6 @@ export function createRouter () {
 			path: "/login",
 			component: _0011cd9b,
 			name: "login"
-		},
-		{
-			path: "/profile",
-			component: _3e01a95b,
-			name: "profile"
 		},
 		{
 			path: "/register",
